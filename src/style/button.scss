@@ -1,0 +1,28 @@
+@import './variables.scss';
+
+.button {
+    height: 32px;
+    background: $yellow;
+    box-shadow: 0px 4px 4px rgba(21, 22, 28, 0.45);
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s all;
+    cursor: pointer;
+    border: none;
+    &__filter {
+        width: 150px;
+        &_active {
+            font-weight: 700;
+        }
+    }
+    &:hover {
+        background-color: $grey-light;
+    }
+    &__add {
+        width: 100px;
+    }
+}

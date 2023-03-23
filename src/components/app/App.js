@@ -1,21 +1,27 @@
-import './App.scss';
+import ShopAdd from '../shopAdd/ShopAdd';
+import ShopFilter from '../shopFilter/ShopFilter';
+import ShopFind from '../shopFind/ShopFind';
+import ShopList from '../shopList/ShopList';
+import ShopListItem from '../shopListItem/ShopListItem';
+import ShopTotal from '../shopTotal/ShopTotal';
 
-function App() {
+import './app.scss';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className='app'>
+      <header>
+        <h1 className='app__header'>Shopping list</h1>
       </header>
+      <main>
+        <section className='search'>
+          <ShopFind/>
+          <ShopFilter/>
+        </section>
+        <ShopList/>
+        <ShopAdd/>
+        <ShopTotal/>
+      </main>
     </div>
   );
 }

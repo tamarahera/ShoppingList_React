@@ -1,0 +1,24 @@
+@import './variables.scss';
+
+.input {
+    padding: 8px 18px;
+    font-size: 14px;
+    line-height: 16px;
+    height: 32px;
+    background: $grey-light;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    border: none;
+    &::placeholder {
+        color: $grey-input-text;
+    }
+    &__find {
+        width: 279px;
+    }
+    &__main {
+        width: 234px;
+    }
+    &__add {
+        width: 150px;
+    }
+}
