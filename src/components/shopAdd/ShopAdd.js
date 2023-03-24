@@ -3,7 +3,7 @@ import './shopAdd.scss';
 const ShopAdd = () => {
     return (
         <section className='add'>
-{/*             <p className='add__title'>Add a new item:</p>
+            <p className='add__title'>Add a new item:</p>
             <form className='add__form' action="">
                 <input type="text"              
                        className="input input__main"
@@ -26,7 +26,7 @@ const ShopAdd = () => {
                         Reset
                     </button>
                 </div>
-            </form> */}
+            </form>
         </section>
     )
 }
