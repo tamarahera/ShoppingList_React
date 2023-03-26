@@ -11,6 +11,9 @@
         font-size: 40px;
     }
 }
+.container {
+    margin: 0 auto;
+}
 
 .search {
     margin: 0 auto;
@@ -26,5 +29,24 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 540px;
+    }
+    .search {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    .search {
+        padding: 25px 13px;
     }
 }

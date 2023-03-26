@@ -13,8 +13,9 @@
         display: grid;
         align-items: center;
         grid-template-rows: 45px;
-        grid-template-columns: 50% 90px 90px 90px;
+        grid-template-columns: 50% repeat(3, 90px);
         padding: 0 17px;
+        justify-content: space-between;
         p {
             color: $grey-light;
             font-size: 20px;
@@ -37,9 +38,10 @@
         display: grid;
         align-items: center;
         grid-template-rows: 45px;
-        grid-template-columns: 50% 90px 90px 90px;
+        grid-template-columns: 50% repeat(3, 90px);
         font-size: 17px;
         line-height: 20px;
+        justify-content: space-between;
         &:last-child {
             border-bottom: none;
         }
@@ -111,7 +113,7 @@
     }
     &__btn {
         display: flex;
-        padding: 0 6px;
+        padding: 10px 6px;
         border: none;
         background-color: unset;
         cursor: pointer;
@@ -143,7 +145,7 @@
     100%{    
         opacity: 1;
     }
-  }
+}
 @keyframes uncheck {
     0%{
         opacity: 1;
@@ -151,4 +153,69 @@
     100%{    
         opacity: 0;
     }
-  }
+}
+
+
+@media (max-width: 768px) {
+    .list {
+        &__title, &__item {
+            grid-template-columns: 38% repeat(3, 90px);
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .list {
+        padding: 25px 13px;
+        &__title {
+            grid-template-columns: 45% 41px 50px 41px;
+            grid-template-rows: 40px;
+            p {
+                font-size: 14px;
+                line-height: 14px;
+                &:first-child {
+                    text-align: left;
+                    padding-left: 21px;
+                }
+            }
+        }
+        &__wrapper {
+            padding: 13px;
+        }
+        &__item {
+            grid-template-columns: 45% 41px 50px 41px;
+            font-size: 14px;
+            line-height: 14px;
+        }
+        &__name {
+            padding-left: 13px;
+            white-space: nowrap;
+            &_checkbox {
+                left: 2px;
+                width: 15px;
+                height: 15px;
+                &:after {
+
+                    bottom: 3px;
+                    width: 4px;
+                    height: 10px;
+                    left: 7px;
+                }
+            }
+        }
+        &__btn {
+            padding: 4px;
+        }
+        &__icon {
+            &_important {
+                width: 15px;    
+                height: 15px;
+            }
+            &_delete {
+                width: 13px;    
+                height: 13px;
+            }
+        }
+    }
+}
+  

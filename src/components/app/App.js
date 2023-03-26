@@ -13,7 +13,7 @@ const App = () => {
       <header>
         <h1 className='app__header'>Shopping list</h1>
       </header>
-      <main>
+      <main className='container'>
         <section className='search'>
           <ShopFind/>
           <ShopFilter/>

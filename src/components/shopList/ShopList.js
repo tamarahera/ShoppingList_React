@@ -17,7 +17,7 @@ const ShopList = () => {
                         <span className="list__name_checkbox"></span>
                     </label>
                     <input type="text" className="list__amount" value="3"/>
-                    <input type="text" className="list__price" value="20$"/>
+                    <input type="text" className="list__price" value="200$"/>
                     <div className="list__btns">
                         <button className="list__btn">
                             <svg viewBox="0 0 17 17" 

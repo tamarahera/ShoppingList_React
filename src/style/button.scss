@@ -26,3 +26,13 @@
         width: 100px;
     }
 }
+
+@media (max-width: 576px) {
+    .button {
+        &__filter {
+            width: 87px;
+            font-size: 12px;
+            line-height: 14px;
+        }
+    }
+}

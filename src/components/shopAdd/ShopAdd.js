@@ -19,10 +19,10 @@ const ShopAdd = () => {
                        required />
 
                 <div className='add__buttons'>
-                    <button className="button button__add">
+                    <button type="submit" className="button button__add">
                         Add
                     </button>
-                    <button className="button button__add">
+                    <button type="reset" className="button button__add">
                         Reset
                     </button>
                 </div>
