@@ -32,6 +32,7 @@
         background-color: $white-list;
         box-shadow: 0px 4px 4px rgba(21, 22, 28, 0.6);
         border-radius: 20px;
+        list-style: unset;
     }
     &__item {
         border-bottom: 1px solid $grey-dark;

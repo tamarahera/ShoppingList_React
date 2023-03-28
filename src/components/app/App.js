@@ -7,6 +7,25 @@ import ShopTotal from '../shopTotal/ShopTotal';
 
 import './app.scss';
 
+const dataItems = [
+  {shopItem: 'Bananas', 
+  amount: '2', 
+  price: '3', 
+  important: false},
+  {shopItem: 'Cat`s food', 
+  amount: '5', 
+  price: '10', 
+  important: true},
+  {shopItem: 'Bread', 
+  amount: '4', 
+  price: '8', 
+  important: false},
+  {shopItem: 'Milk', 
+  amount: '3', 
+  price: '6', 
+  important: false}
+]
+
 const App = () => {
   return (
     <div className='app'>
@@ -18,7 +37,7 @@ const App = () => {
           <ShopFind/>
           <ShopFilter/>
         </section>
-        <ShopList/>
+        <ShopList data={dataItems}/>        
         <ShopAdd/>
         <ShopTotal/>
       </main>
