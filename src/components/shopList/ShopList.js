@@ -1,12 +1,41 @@
+import { useState, useEffect } from 'react';
+
 import './shopList.scss';
 
 const ShopList = ({data}) => {
+    let initValue = true;
 
+    const content = initValue ? <InitTitle/> : <View data={data}/>;
+    return (
+        <section className='list'>
+            {content}
+        </section>
+    )
+}
+
+const InitTitle = () => {
+    return (
+        <h2 className="list__init">Add some item to buy...</h2>
+    )
+} 
+
+const View = ({data}) => {
+    console.log(data)
     const shopListItem = data.map((item, index) => {
-        const {shopItem, price, amount, important} = item;
-        return(
+        const {shopItem, amount, price, checked, important} = item;
+        let importantClass = "list__icon list__icon_important";
+        if (important) {
+            importantClass += " list__icon_important_active"
+        }
+
+        let checkedClass = "list__name";
+        if (checked) {
+            checkedClass += " list__name_checked"
+        }
+
+        return (
             <li className="list__item" key={index}>
-                <label className="list__name">
+                <label className={checkedClass}>
                     <input type="checkbox" name="item" value="bananas"/>
                     {shopItem}
                     <span className="list__name_checkbox"></span>
@@ -17,7 +46,7 @@ const ShopList = ({data}) => {
                     <button className="list__btn">
                         <svg viewBox="0 0 17 17" 
                         xmlns="http://www.w3.org/2000/svg"
-                        className="list__icon list__icon_important">
+                        className={importantClass}>
                             <path d="M9.42486 0.597589C9.25424 0.232396 8.89367 0 8.49769 0C8.10171 0 7.74436 0.232396 7.57051 0.597589L5.50047 4.98987L0.877481 5.6937C0.491159 5.75346 0.169223 6.03233 0.0501075 6.41413C-0.0690086 6.79592 0.0275719 7.21755 0.304436 7.49975L3.659 10.9226L2.86704 15.7598C2.80265 16.1582 2.96362 16.5632 3.28234 16.7989C3.60105 17.0346 4.02279 17.0645 4.37048 16.8753L8.50091 14.6011L12.6313 16.8753C12.979 17.0645 13.4008 17.0379 13.7195 16.7989C14.0382 16.5599 14.1992 16.1582 14.1348 15.7598L13.3396 10.9226L16.6942 7.49975C16.971 7.21755 17.0708 6.79592 16.9485 6.41413C16.8262 6.03233 16.5074 5.75346 16.1211 5.6937L11.4949 4.98987L9.42486 0.597589Z"/>
                         </svg>
                     </button>
@@ -33,8 +62,9 @@ const ShopList = ({data}) => {
         )
     })
 
+
     return (
-        <section className='list'>
+        <>
             <div className="list__title">
                 <p>Item</p>
                 <p>Amount</p>
@@ -44,7 +74,7 @@ const ShopList = ({data}) => {
             <ul className="list__wrapper">
                 {shopListItem}
             </ul>
-        </section>
+        </>
     )
 }
 

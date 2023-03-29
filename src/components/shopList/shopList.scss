@@ -5,10 +5,14 @@
     margin-top: 14px;
     padding: 30px;
     max-width: 623px;
-    min-height: 320px;
+    min-height: 100px;
     background: $grey-dark;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
+    &__init {
+        color: $grey-light;
+        font-weight: normal;
+    }
     &__title {
         display: grid;
         align-items: center;
@@ -90,7 +94,7 @@
                 transform: rotate(45deg);
             }
         }
-        &_cheked {
+        &_checked {
             text-decoration: line-through;
         }
     }
@@ -129,7 +133,7 @@
                 fill: #ffd13a;
             }
             &:hover {
-                fill: #ffd13a;
+                fill: #b8b5b5;
             }
         }
         &_delete {
@@ -168,6 +172,10 @@
 @media (max-width: 576px) {
     .list {
         padding: 25px 13px;
+        &__init {
+            font-size: 20px;
+            padding-left: 12px;
+        }
         &__title {
             grid-template-columns: 45% 41px 50px 41px;
             grid-template-rows: 40px;
