@@ -1,14 +1,6 @@
 @import '../../style/variables.scss';
 
 .list {
-    margin: 0 auto;
-    margin-top: 14px;
-    padding: 30px;
-    max-width: 623px;
-    min-height: 100px;
-    background: $grey-dark;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 25px;
     &__init {
         color: $grey-light;
         font-weight: normal;
@@ -38,132 +30,11 @@
         border-radius: 20px;
         list-style: unset;
     }
-    &__item {
-        border-bottom: 1px solid $grey-dark;
-        display: grid;
-        align-items: center;
-        grid-template-rows: 45px;
-        grid-template-columns: 50% repeat(3, 90px);
-        font-size: 17px;
-        line-height: 20px;
-        justify-content: space-between;
-        &:last-child {
-            border-bottom: none;
-        }
-    }
-    &__name {
-        display: block;
-        position: relative;
-        padding: 13px 13px 13px 32px;
-        cursor: pointer;
-        input {
-            visibility: hidden;
-        }
-        input:checked ~ &_checkbox:after {
-            opacity: 0;
-            display: block;
-            animation: check 0.3s forwards;
-        }
-        input ~ &_checkbox:after {
-            opacity: 1;
-            display: none;
-            animation: uncheck 0.3s forwards;
-        }
-        &_checkbox {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 12px;
-            height: 20px;
-            width: 20px;
-            background-color: #fff;
-            border-radius: 100%;
-            border: 1px solid $grey-dark;
-            &:after {
-                content: "";
-                position: absolute;
-                display: none;
-                left: 8px;
-                bottom: 5px;
-                width: 6px;
-                height: 12px;
-                border: solid $grey-dark;
-                border-width: 0 4px 4px 0;
-                -webkit-transform: rotate(45deg);
-                -ms-transform: rotate(45deg);
-                transform: rotate(45deg);
-            }
-        }
-        &_checked {
-            text-decoration: line-through;
-        }
-    }
-    &__amount, &__price {
-        background-color: unset;
-        margin: 0 3px;
-        padding: 3px;
-        font-size: inherit;
-        line-height: inherit;
-        text-align: center;
-        border-radius: 20px;
-        border: none;
-        &:focus {
-            border: none;
-        }
-    }
-    &__btns {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    &__btn {
-        display: flex;
-        padding: 10px 6px;
-        border: none;
-        background-color: unset;
-        cursor: pointer;
-    }
-    &__icon {
-        &_important {
-            width: 18px;    
-            height: 18px;
-            transition: .2s all;
-            fill: $grey-light;
-            &_active {
-                fill: #ffd13a;
-            }
-            &:hover {
-                fill: #b8b5b5;
-            }
-        }
-        &_delete {
-            width: 15px;    
-            height: 15px;
-            fill: $red;
-        }
-    }
 }
-@keyframes check{
-    0%{
-        opacity: 0;
-    }
-    100%{    
-        opacity: 1;
-    }
-}
-@keyframes uncheck {
-    0%{
-        opacity: 1;
-    }
-    100%{    
-        opacity: 0;
-    }
-}
-
 
 @media (max-width: 768px) {
     .list {
-        &__title, &__item {
+        &__title{
             grid-template-columns: 38% repeat(3, 90px);
         }
     }
@@ -171,7 +42,6 @@
 
 @media (max-width: 576px) {
     .list {
-        padding: 25px 13px;
         &__init {
             font-size: 20px;
             padding-left: 12px;
@@ -190,40 +60,6 @@
         }
         &__wrapper {
             padding: 13px;
-        }
-        &__item {
-            grid-template-columns: 45% 41px 50px 41px;
-            font-size: 14px;
-            line-height: 14px;
-        }
-        &__name {
-            padding-left: 13px;
-            white-space: nowrap;
-            &_checkbox {
-                left: 2px;
-                width: 15px;
-                height: 15px;
-                &:after {
-
-                    bottom: 3px;
-                    width: 4px;
-                    height: 10px;
-                    left: 7px;
-                }
-            }
-        }
-        &__btn {
-            padding: 4px;
-        }
-        &__icon {
-            &_important {
-                width: 15px;    
-                height: 15px;
-            }
-            &_delete {
-                width: 13px;    
-                height: 13px;
-            }
         }
     }
 }
