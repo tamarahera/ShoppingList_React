@@ -1,7 +1,6 @@
 import './shopListItem.scss';
 
-const ShopListItem = ({data}) => {
-    console.log(data)
+const ShopListItem = ({data, toggleImportant, onChecked}) => {
     const {name, amount, price, checked, important} = data;
     let importantClass = "list__icon list__icon_important";
     if (important) {
@@ -13,18 +12,17 @@ const ShopListItem = ({data}) => {
         checkedClass += " list__name_checked"
     }
 
-
     return (
         <li className="list__item">
             <label className={checkedClass}>
-                <input type="checkbox" name="item" defaultValue="bananas"/>
+                <input checked={checked} type="checkbox" name="item" onChange={onChecked}/>
                 {name}
                 <span className="list__name_checkbox"></span>
             </label>
             <input type="text" className="list__amount" defaultValue={amount}/>
             <input type="text" className="list__price" defaultValue={price + '$'}/>
             <div className="list__btns">
-                <button className="list__btn">
+                <button className="list__btn" onClick={(id) => toggleImportant(id, important)}>
                     <svg viewBox="0 0 17 17" 
                     xmlns="http://www.w3.org/2000/svg"
                     className={importantClass}>

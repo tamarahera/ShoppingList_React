@@ -3,16 +3,19 @@ import ShopListItem from '../shopListItem/ShopListItem';
 
 import './shopList.scss';
 
-const ShopList = ({data}) => {
+const ShopList = ({data, toggleImportant, onChecked}) => {
 
-    console.log(data)
     const contentItem = data.map(item => {
-        console.log(item)
         const {id, ...itemProps} = item;
         return (
-            <ShopListItem key={id} data={itemProps}/>
+            <ShopListItem key={id} 
+                          data={itemProps}
+                          toggleImportant={() => toggleImportant(id)}
+                          onChecked={() => onChecked(id)}
+                          />
         )
     })
+    
     return (
         <>
             <div className="list__title">

@@ -47,8 +47,25 @@ const dataItems = [
 
 const App = () => {
   const [data, setData] = useState(dataItems);
+  
+  const toggleImportant = (id) => {
+    setData(prevData => prevData.map(objItem => {
+      if (objItem.id === id) {
+        console.log(objItem.important)
+        return {...objItem, important: !objItem.important}
+      }
+      return objItem;
+    }))
+  }
+  const onChecked = (id) => {
+    setData(prevData => prevData.map(objItem => {
+      if (objItem.id === id) {
+        return {...objItem, checked: !objItem.checked}
+      }
+      return objItem;
+    }))
+  }
 
-  console.log(data)
   return (
     <div className='app'>
       <header>
@@ -60,7 +77,7 @@ const App = () => {
           <ShopFilter/>
         </section>
         <section className='list'>
-          {data ? <ShopList data={data}/> : <InitTitle/>}
+          {data ? <ShopList data={data} toggleImportant={toggleImportant} onChecked={onChecked}/> : <InitTitle/>}
         </section>
         <ShopAdd/>
         <ShopTotal/>
