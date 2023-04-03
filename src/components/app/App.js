@@ -66,6 +66,18 @@ const App = () => {
     }))
   }
 
+  const onChangeInput = (id, inputValue, inputDataAttr) => {
+    setData(prevData => prevData.map(objItem => {
+      console.log(objItem, objItem.id, id)
+      if (objItem.id === id) {  
+        console.log(inputValue)
+        return {...objItem, [inputDataAttr]: inputValue.replace(/\D/g, '')}
+      }
+      return {...objItem}
+    }))
+    console.log(id, inputValue, inputDataAttr)
+  }
+
   return (
     <div className='app'>
       <header>
@@ -77,7 +89,11 @@ const App = () => {
           <ShopFilter/>
         </section>
         <section className='list'>
-          {data ? <ShopList data={data} toggleImportant={toggleImportant} onChecked={onChecked}/> : <InitTitle/>}
+          {data ? <ShopList data={data} 
+                            toggleImportant={toggleImportant} 
+                            onChecked={onChecked} 
+                            onChangeInput={onChangeInput}
+                  /> : <InitTitle/>}
         </section>
         <ShopAdd/>
         <ShopTotal/>
