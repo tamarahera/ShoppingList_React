@@ -89,7 +89,7 @@ const App = () => {
           <ShopFilter/>
         </section>
         <section className='list'>
-          {data ? <ShopList data={data} 
+          {data.length > 0 ? <ShopList data={data} 
                             toggleImportant={toggleImportant} 
                             onChecked={onChecked} 
                             onChangeInput={onChangeInput}
