@@ -3,7 +3,7 @@ import ShopListItem from '../shopListItem/ShopListItem';
 
 import './shopList.scss';
 
-const ShopList = ({data, toggleImportant, onChecked, onChangeInput}) => {
+const ShopList = ({data, toggleImportant, onChecked, onChangeInput, onDeleteItem}) => {
 
     const contentItem = data.map(item => {
         const {id, ...itemProps} = item;
@@ -13,6 +13,7 @@ const ShopList = ({data, toggleImportant, onChecked, onChangeInput}) => {
                           toggleImportant={() => toggleImportant(id)}
                           onChecked={() => onChecked(id)}
                           onChangeInput={(e) => onChangeInput(id, e.target.value, e.currentTarget.getAttribute('data-input'))}
+                          onDeleteItem={() => onDeleteItem(id)}
                           />
         )
     })

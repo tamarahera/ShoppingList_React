@@ -68,15 +68,20 @@ const App = () => {
 
   const onChangeInput = (id, inputValue, inputDataAttr) => {
     setData(prevData => prevData.map(objItem => {
-      console.log(objItem, objItem.id, id)
       if (objItem.id === id) {  
-        console.log(inputValue)
         return {...objItem, [inputDataAttr]: inputValue.replace(/\D/g, '')}
       }
       return {...objItem}
     }))
-    console.log(id, inputValue, inputDataAttr)
   }
+
+  const onDeleteItem = (id) => {
+    setData(prevData => prevData.filter(objItem => {
+      return objItem.id !== id
+    }))
+  }
+
+
 
   return (
     <div className='app'>
@@ -93,8 +98,9 @@ const App = () => {
                             toggleImportant={toggleImportant} 
                             onChecked={onChecked} 
                             onChangeInput={onChangeInput}
+                            onDeleteItem={onDeleteItem}
                   /> : <InitTitle/>}
-        </section>
+       </section>
         <ShopAdd/>
         <ShopTotal/>
       </main>
