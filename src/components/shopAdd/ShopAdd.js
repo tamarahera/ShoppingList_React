@@ -3,7 +3,7 @@ import './shopAdd.scss';
 const ShopAdd = () => {
     return (
         <section className='add'>
-            <p className='add__title'>Add a new item:</p>
+            <h2 className='add__title'>Add a new item:</h2>
             <form className='add__form' action="">
                 <input type="text"              
                        className="input input__main"

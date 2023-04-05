@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import ShopAdd from '../shopAdd/ShopAdd';
 import ShopFilter from '../shopFilter/ShopFilter';
@@ -12,32 +12,32 @@ import './app.scss';
 const dataItems = [
   {
     name: 'Bananas', 
-    amount: '2', 
-    price: '3',
+    amount: 2, 
+    price: 3,
     checked: false, 
     important: false,
     id: '1'
   },
   {
     name: 'Cat`s food', 
-    amount: '5', 
-    price: '10',
+    amount: 5, 
+    price: 10,
     checked: false, 
     important: true,
     id: '2'
   },
   {
     name: 'Bread', 
-    amount: '4', 
-    price: '8',
+    amount: 4, 
+    price: 8,
     checked: false, 
     important: false,
     id: '3'
   },
   {
     name: 'Milk', 
-    amount: '3', 
-    price: '6',
+    amount: 3, 
+    price: 6,
     checked: true, 
     important: false,
     id: '4'
@@ -51,7 +51,6 @@ const App = () => {
   const toggleImportant = (id) => {
     setData(prevData => prevData.map(objItem => {
       if (objItem.id === id) {
-        console.log(objItem.important)
         return {...objItem, important: !objItem.important}
       }
       return objItem;
@@ -81,8 +80,17 @@ const App = () => {
     }))
   }
 
-
-
+  const calcAmount = (arr, prop) => {
+    let res = arr.reduce((sum, item) => {
+      return sum + item[prop];
+    }, 0);
+    return res;
+  }
+  
+  const totalItems = data.filter(item => !item.checked);
+  const totalAmount = calcAmount(totalItems, 'amount');
+  const totalPrice = calcAmount(totalItems, 'price');
+  
   return (
     <div className='app'>
       <header>
@@ -102,7 +110,9 @@ const App = () => {
                   /> : <InitTitle/>}
        </section>
         <ShopAdd/>
-        <ShopTotal/>
+        <ShopTotal totalItems={totalItems.length}
+                   totalAmount={totalAmount}
+                   totalPrice={totalPrice}/>
       </main>
     </div>
   );

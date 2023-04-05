@@ -1,11 +1,11 @@
 import './shopTotal.scss';
 
-const ShopTotal = () => {
+const ShopTotal = ({totalItems, totalAmount, totalPrice}) => {
     return (
         <section className='total'>
-            <p>Total: 4 items</p>
-            <p>Total amount: 4</p>
-            <p>Total price: 20$</p>
+            <p>Total items: {totalItems} items</p>
+            <p>Total amount: {totalAmount}</p>
+            <p>Total price: {totalPrice}$</p>
         </section>
     )
 }
