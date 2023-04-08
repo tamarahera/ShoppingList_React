@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import ShopAdd from '../shopAdd/ShopAdd';
 import ShopFilter from '../shopFilter/ShopFilter';
@@ -16,7 +17,7 @@ const dataItems = [
     price: 3,
     checked: false, 
     important: false,
-    id: '1'
+    id: uuidv4()
   },
   {
     name: 'Cat`s food', 
@@ -24,7 +25,7 @@ const dataItems = [
     price: 10,
     checked: false, 
     important: true,
-    id: '2'
+    id: uuidv4()
   },
   {
     name: 'Bread', 
@@ -32,7 +33,7 @@ const dataItems = [
     price: 8,
     checked: false, 
     important: false,
-    id: '3'
+    id: uuidv4()
   },
   {
     name: 'Milk', 
@@ -40,7 +41,7 @@ const dataItems = [
     price: 6,
     checked: true, 
     important: false,
-    id: '4'
+    id: uuidv4()
   }
 ];
 
