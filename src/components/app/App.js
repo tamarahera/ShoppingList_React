@@ -5,7 +5,6 @@ import ShopAdd from '../shopAdd/ShopAdd';
 import ShopFilter from '../shopFilter/ShopFilter';
 import ShopFind from '../shopFind/ShopFind';
 import {ShopList, InitTitle} from '../shopList/ShopList';
-import ShopListItem from '../shopListItem/ShopListItem';
 import ShopTotal from '../shopTotal/ShopTotal';
 
 import './app.scss';
@@ -87,8 +86,25 @@ const App = () => {
     }, 0);
     return res;
   }
+
+  const onAddItem = (item, amount, price) => {
+    let newListItem = {
+      name: item, 
+      amount, 
+      price,
+      checked: false, 
+      important: false,
+      id: uuidv4()
+    }
+    setData(prevData => {
+      const newArr = [...prevData, newListItem];
+      return newArr;
+    });
+  }
+  console.log(data)
   
   const totalItems = data.filter(item => !item.checked);
+  console.log(totalItems)
   const totalAmount = calcAmount(totalItems, 'amount');
   const totalPrice = calcAmount(totalItems, 'price');
   
@@ -110,7 +126,7 @@ const App = () => {
                             onDeleteItem={onDeleteItem}
                   /> : <InitTitle/>}
        </section>
-        <ShopAdd/>
+        <ShopAdd onAddItem={onAddItem}/>
         <ShopTotal totalItems={totalItems.length}
                    totalAmount={totalAmount}
                    totalPrice={totalPrice}/>

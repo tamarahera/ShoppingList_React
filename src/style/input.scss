@@ -1,5 +1,12 @@
 @import './variables.scss';
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: $grey-dark !important;
+}
 .input {
     padding: 8px 18px;
     font-size: 14px;
@@ -9,9 +16,21 @@
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
     border: none;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+    &[type='number'] {
+        -moz-appearance:textfield;
+    }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
     &::placeholder {
         color: $grey-input-text;
-    }
+    }   
     &__find {
         width: 272px;
     }
