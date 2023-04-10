@@ -23,11 +23,20 @@ const ShopAdd = ({onAddItem}) => {
     }
     console.log(item, amount, price)
     const onSubmit = (e) => {
+        if (item === '') return;
+        if (amount === '') return;
+        if (price === '') return;
 
         e.preventDefault();
+        
         onAddItem(item, amount, price);
+        onResetInputs();
     }
-
+    const onResetInputs = () => {
+        setItem('');
+        setAmount('');
+        setPrice('');
+    }
 
     return (
         <section className='add'>
@@ -59,7 +68,7 @@ const ShopAdd = ({onAddItem}) => {
                     <button type="submit" onClick={onSubmit} className="button button__add">
                         Add
                     </button>
-                    <button type="reset" className="button button__add">
+                    <button type="reset" onClick={onResetInputs} className="button button__add">
                         Reset
                     </button>
                 </div>
