@@ -7,14 +7,14 @@ const ShopListItem = ({data, toggleImportant, onChecked, onChangeInput, onDelete
         importantClass += " list__icon_important_active"
     }
 
-    let checkedClass = "list__name";
+    let checkedClass = "list__item";
     if (checked) {
-        checkedClass += " list__name_checked"
+        checkedClass += " list__item_checked"
     }
 
     return (
-        <li className="list__item">
-            <label className={checkedClass}>
+        <li className={checkedClass}>
+            <label className="list__name">
                 <input checked={checked} type="checkbox" name="item" onChange={onChecked}/>
                 {name}
                 <span className="list__name_checkbox"></span>
