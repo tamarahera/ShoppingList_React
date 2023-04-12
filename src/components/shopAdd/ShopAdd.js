@@ -71,8 +71,7 @@ const ShopAdd = ({onAddItem}) => {
                     <button type="reset" onClick={onResetInputs} className="button button__add">
                         Reset
                     </button>
-                </div>
-            </form>
+                </div>            </form>
         </section>
     )
 }

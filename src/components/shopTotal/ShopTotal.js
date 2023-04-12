@@ -3,9 +3,9 @@ import './shopTotal.scss';
 const ShopTotal = ({totalItems, totalAmount, totalPrice}) => {
     return (
         <section className='total'>
-            <p>Total items: {totalItems} items</p>
-            <p>Total amount: {totalAmount}</p>
-            <p>Total price: {totalPrice}$</p>
+            <p>Total items: <span>{totalItems}</span></p>
+            <p>Total amount: <span>{totalAmount}</span></p>
+            <p>Total price: <span>{totalPrice}$</span></p>
         </section>
     )
 }
