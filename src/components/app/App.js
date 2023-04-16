@@ -6,6 +6,7 @@ import ShopFilter from '../shopFilter/ShopFilter';
 import ShopFind from '../shopFind/ShopFind';
 import {ShopList, InitTitle} from '../shopList/ShopList';
 import ShopTotal from '../shopTotal/ShopTotal';
+import Footer from '../footer/Footer';
 
 import './app.scss';
 
@@ -131,6 +132,7 @@ const App = () => {
                    totalAmount={totalAmount}
                    totalPrice={totalPrice}/>
       </main>
+      <Footer/>
     </div>
   );
 }
