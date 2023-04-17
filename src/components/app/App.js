@@ -48,6 +48,7 @@ const dataItems = [
 
 const App = () => {
   const [data, setData] = useState(dataItems);
+  const [searchValue, setSearchValue] = useState('');
   
   const toggleImportant = (id) => {
     setData(prevData => prevData.map(objItem => {
@@ -102,12 +103,32 @@ const App = () => {
       return newArr;
     });
   }
-  console.log(data)
+
+
+  const searchItem = (items, searchValue) => {
+    if (searchValue.length === 0) {
+      return items;
+    } 
+
+    return items.filter(item => {
+      return item.name.indexOf(searchValue) > -1
+    })
+  }
+
+  const onUpdateSearch = (searchValue) => {
+    setSearchValue(searchValue);
+  }
+
+
+
+  console.log(data);
   
   const totalItems = data.filter(item => !item.checked);
   console.log(totalItems)
   const totalAmount = calcAmount(totalItems, 'amount');
   const totalPrice = calcAmount(totalItems, 'price');
+  const visibleData = searchItem(data, searchValue);
+  console.log(visibleData)
   
   return (
     <div className='app'>
@@ -116,11 +137,11 @@ const App = () => {
       </header>
       <main className='container'>
         <section className='search'>
-          <ShopFind/>
+          <ShopFind onUpdateSearch={onUpdateSearch}/>
           <ShopFilter/>
         </section>
         <section className='list'>
-          {data.length > 0 ? <ShopList data={data} 
+          {data.length > 0 ? <ShopList data={visibleData} 
                             toggleImportant={toggleImportant} 
                             onChecked={onChecked} 
                             onChangeInput={onChangeInput}
