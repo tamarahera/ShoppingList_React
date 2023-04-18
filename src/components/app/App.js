@@ -49,6 +49,7 @@ const dataItems = [
 const App = () => {
   const [data, setData] = useState(dataItems);
   const [searchValue, setSearchValue] = useState('');
+  const [filterValue, setFilterValue] = useState('all');
   
   const toggleImportant = (id) => {
     setData(prevData => prevData.map(objItem => {
@@ -104,6 +105,9 @@ const App = () => {
     });
   }
 
+  const onFilterImportant = (data) => {
+    return data.filter(item => item.important)
+  }
 
   const searchItem = (items, searchValue) => {
     if (searchValue.length === 0) {
@@ -119,6 +123,20 @@ const App = () => {
     setSearchValue(searchValue);
   }
 
+  const filterItem = (items, filterValue) => {
+    switch (filterValue) {
+      case 'all':
+        return items;
+      case 'important':
+        return items.filter(item => item.important);
+      case 'priceOver5':
+        return items.filter(item => item.price > 5);
+    }
+  }
+
+  const onUpdateFilter = (filter) => {
+    setFilterValue(filter)
+  }
 
 
   console.log(data);
@@ -127,7 +145,7 @@ const App = () => {
   console.log(totalItems)
   const totalAmount = calcAmount(totalItems, 'amount');
   const totalPrice = calcAmount(totalItems, 'price');
-  const visibleData = searchItem(data, searchValue);
+  const visibleData = filterItem(searchItem(data, searchValue), filterValue);
   console.log(visibleData)
   
   return (
@@ -138,7 +156,7 @@ const App = () => {
       <main className='container'>
         <section className='search'>
           <ShopFind onUpdateSearch={onUpdateSearch}/>
-          <ShopFilter/>
+          <ShopFilter onUpdateFilter={onUpdateFilter} />
         </section>
         <section className='list'>
           {data.length > 0 ? <ShopList data={visibleData} 

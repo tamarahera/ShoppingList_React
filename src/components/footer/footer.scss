@@ -1,12 +1,12 @@
 @import '../../style/variables.scss';
 
 .footer {    
-    margin-top: 110px;
+    margin-top: 80px;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     gap: 10px;
     &__link {
         display: block;
