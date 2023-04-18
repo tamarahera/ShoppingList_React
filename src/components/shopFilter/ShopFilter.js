@@ -1,7 +1,7 @@
 import './shopFilter.scss';
 import '../../style/button.scss';
 
-const ShopFilter = ({onUpdateFilter}) => {
+const ShopFilter = ({onUpdateFilter, filterValue}) => {
     const btnData = [
         {name: 'all', label: 'All items'},
         {name: 'important', label: 'Important'},
@@ -9,8 +9,12 @@ const ShopFilter = ({onUpdateFilter}) => {
     ]
 
     const buttons = btnData.map(({name, label}) => {
+        let currentClass = 'button button__filter';
+        if (filterValue === name) {
+            currentClass += ' button__filter_active'
+        } 
         return (
-            <button className='button button__filter button__filter_active' key={name} onClick={() => onUpdateFilter(name)}>
+            <button className={currentClass} key={name} onClick={() => onUpdateFilter(name)}>
                {label}
             </button>
         )

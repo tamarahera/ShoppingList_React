@@ -156,7 +156,8 @@ const App = () => {
       <main className='container'>
         <section className='search'>
           <ShopFind onUpdateSearch={onUpdateSearch}/>
-          <ShopFilter onUpdateFilter={onUpdateFilter} />
+          <ShopFilter onUpdateFilter={onUpdateFilter}
+                      filterValue={filterValue}/>
         </section>
         <section className='list'>
           {data.length > 0 ? <ShopList data={visibleData} 
