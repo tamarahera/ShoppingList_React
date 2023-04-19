@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import ShopAdd from '../shopAdd/ShopAdd';
 import ShopFilter from '../shopFilter/ShopFilter';
 import ShopFind from '../shopFind/ShopFind';
-import {ShopList, InitTitle} from '../shopList/ShopList';
+import {ShopList, InitTitle, NoMatchTitle} from '../shopList/ShopList';
 import ShopTotal from '../shopTotal/ShopTotal';
 import Footer from '../footer/Footer';
 
@@ -105,10 +105,6 @@ const App = () => {
     });
   }
 
-  const onFilterImportant = (data) => {
-    return data.filter(item => item.important)
-  }
-
   const searchItem = (items, searchValue) => {
     if (searchValue.length === 0) {
       return items;
@@ -138,16 +134,28 @@ const App = () => {
     setFilterValue(filter)
   }
 
-
-  console.log(data);
+  const setContent = () => {
+    if (data.length < 1) {
+      return <InitTitle/>
+    } else if (visibleData.length < 1) {
+      return <NoMatchTitle/>
+    } else {
+      return <ShopList data={visibleData} 
+                      toggleImportant={toggleImportant} 
+                      onChecked={onChecked} 
+                      onChangeInput={onChangeInput}
+                      onDeleteItem={onDeleteItem}/>
+    }
+  }
   
   const totalItems = data.filter(item => !item.checked);
   console.log(totalItems)
   const totalAmount = calcAmount(totalItems, 'amount');
   const totalPrice = calcAmount(totalItems, 'price');
   const visibleData = filterItem(searchItem(data, searchValue), filterValue);
-  console.log(visibleData)
-  
+
+  const content = setContent();
+   
   return (
     <div className='app'>
       <header>
@@ -160,12 +168,7 @@ const App = () => {
                       filterValue={filterValue}/>
         </section>
         <section className='list'>
-          {data.length > 0 ? <ShopList data={visibleData} 
-                            toggleImportant={toggleImportant} 
-                            onChecked={onChecked} 
-                            onChangeInput={onChangeInput}
-                            onDeleteItem={onDeleteItem}
-                  /> : <InitTitle/>}
+          {content}
        </section>
         <ShopAdd onAddItem={onAddItem}/>
         <ShopTotal totalItems={totalItems.length}

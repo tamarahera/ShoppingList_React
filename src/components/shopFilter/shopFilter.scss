@@ -6,3 +6,15 @@
         justify-content: space-between;
     }
 }
+
+@media (max-width: 576px) {
+    .search {
+        padding: 25px 13px;
+        &__filter {
+            gap: 10px;
+            button {
+                flex: 1;
+            }
+        }
+    }
+}

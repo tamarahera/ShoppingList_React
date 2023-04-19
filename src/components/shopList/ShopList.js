@@ -39,6 +39,12 @@ const InitTitle = () => {
     )
 } 
 
+const NoMatchTitle = () => {
+    return (
+        <h2 className="list__init">There are no matches...</h2>
+    )
+}
 
 export {ShopList};
 export {InitTitle};
+export {NoMatchTitle};

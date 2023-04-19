@@ -1,9 +1,13 @@
 @import '../../style/variables.scss';
 
-.list {
+.list {position: relative;
     &__init {
         color: $grey-light;
         font-weight: normal;
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
     }
     &__title {
         display: grid;
@@ -43,7 +47,6 @@
 @media (max-width: 576px) {
     .list {
         &__init {
-            font-size: 20px;
             padding-left: 12px;
         }
         &__title {

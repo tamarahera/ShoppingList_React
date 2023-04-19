@@ -14,6 +14,7 @@
         font-size: 20px;
         line-height: 23px;
         color: $grey-light;
+        font-weight: normal;
     }
     &__form {
         margin-top: 23px;
@@ -64,7 +65,7 @@
             line-height: 18px;
         }
         &__form {
-            grid-template-columns: repeat(2, 117px);
+            grid-template-columns: 1fr 1fr;
         }
     }
 }
