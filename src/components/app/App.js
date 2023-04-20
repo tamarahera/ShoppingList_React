@@ -119,6 +119,12 @@ const App = () => {
     setSearchValue(searchValue);
   }
 
+  const onDeleteChecked = () => {
+    setData(prevData => prevData.filter(prevObj => {
+      return prevObj.checked === false;
+    }));
+  }
+
   const filterItem = (items, filterValue) => {
     switch (filterValue) {
       case 'all':
@@ -135,7 +141,7 @@ const App = () => {
   }
 
   const setContent = () => {
-    if (data.length < 1) {
+    if (data.length < 1 || !data) {
       return <InitTitle/>
     } else if (visibleData.length < 1) {
       return <NoMatchTitle/>
@@ -144,12 +150,12 @@ const App = () => {
                       toggleImportant={toggleImportant} 
                       onChecked={onChecked} 
                       onChangeInput={onChangeInput}
-                      onDeleteItem={onDeleteItem}/>
+                      onDeleteItem={onDeleteItem}
+                      onDeleteChecked={onDeleteChecked}/>
     }
   }
   
   const totalItems = data.filter(item => !item.checked);
-  console.log(totalItems)
   const totalAmount = calcAmount(totalItems, 'amount');
   const totalPrice = calcAmount(totalItems, 'price');
   const visibleData = filterItem(searchItem(data, searchValue), filterValue);

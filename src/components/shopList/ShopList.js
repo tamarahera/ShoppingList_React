@@ -3,7 +3,7 @@ import ShopListItem from '../shopListItem/ShopListItem';
 import './shopList.scss';
 import '../../style/button.scss';
 
-const ShopList = ({data, toggleImportant, onChecked, onChangeInput, onDeleteItem}) => {
+const ShopList = ({data, toggleImportant, onChecked, onChangeInput, onDeleteItem, onDeleteChecked}) => {
 
     const contentItem = data.map(item => {
         const {id, ...itemProps} = item;
@@ -30,7 +30,7 @@ const ShopList = ({data, toggleImportant, onChecked, onChangeInput, onDeleteItem
                 {contentItem}
             </ul>
             <div className="list__reset">
-                <button type="reset" className='button button__reset'>Reset</button>    
+                <button type="reset" className='button button__reset' onClick={onDeleteChecked}>Delete checked</button>    
             </div>
         </>
     )
