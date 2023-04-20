@@ -1,6 +1,7 @@
 @import '../../style/variables.scss';
 
-.list {position: relative;
+.list {
+    position: relative;
     &__init {
         color: $grey-light;
         font-weight: normal;
@@ -33,6 +34,13 @@
         box-shadow: 0px 4px 4px rgba(21, 22, 28, 0.6);
         border-radius: 20px;
         list-style: unset;
+    }
+    &__reset {
+        display: flex;
+        justify-content: end;
+        button {
+            margin-top: 20px;
+        }
     }
 }
 

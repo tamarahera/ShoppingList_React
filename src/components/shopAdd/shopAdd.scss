@@ -27,17 +27,6 @@
     }
     &__buttons {
         display: flex;    
-        button {
-            &:nth-child(2) {
-                background-color: #53524F;
-                color: $grey-light;
-                margin-left: 10px;
-                &:hover {
-                    background-color: $grey-light;
-                    color: $grey-dark;
-                }
-            }
-        }
     }
 }
 

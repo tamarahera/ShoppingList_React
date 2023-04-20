@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './shopAdd.scss';
 import '../../style/input.scss';
+import '../../style/button.scss';
 
 const ShopAdd = ({onAddItem}) => {
     
@@ -68,10 +69,11 @@ const ShopAdd = ({onAddItem}) => {
                     <button type="submit" onClick={onSubmit} className="button button__add">
                         Add
                     </button>
-                    <button type="reset" onClick={onResetInputs} className="button button__add">
+                    <button type="reset" onClick={onResetInputs} className="button button__reset">
                         Reset
                     </button>
-                </div>            </form>
+                </div>            
+            </form>
         </section>
     )
 }

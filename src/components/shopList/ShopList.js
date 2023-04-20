@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
 import ShopListItem from '../shopListItem/ShopListItem';
 
 import './shopList.scss';
+import '../../style/button.scss';
 
 const ShopList = ({data, toggleImportant, onChecked, onChangeInput, onDeleteItem}) => {
 
@@ -28,7 +28,10 @@ const ShopList = ({data, toggleImportant, onChecked, onChangeInput, onDeleteItem
             </div>
             <ul className="list__wrapper">
                 {contentItem}
-            </ul>    
+            </ul>
+            <div className="list__reset">
+                <button type="reset" className='button button__reset'>Reset</button>    
+            </div>
         </>
     )
 }

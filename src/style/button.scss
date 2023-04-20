@@ -22,9 +22,18 @@
     &:hover {
         background-color: $grey-light;
     }
-    &__add {
+    &__add, &__reset {
         width: 100px;
         font-weight: bold;
+    }
+    &__reset {
+        background-color: #53524F;
+        color: $grey-light;
+        margin-left: 10px;
+        &:hover {
+            background-color: $grey-light;
+            color: $grey-dark;
+        }          
     }
 }
 
