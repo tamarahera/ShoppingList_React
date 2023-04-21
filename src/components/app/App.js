@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import ShopAdd from '../shopAdd/ShopAdd';
@@ -45,12 +45,22 @@ const dataItems = [
   }
 ];
 
+const LOCAL_STORAGE_KEY = 'shopList.data';
 
 const App = () => {
   const [data, setData] = useState(dataItems);
   const [searchValue, setSearchValue] = useState('');
   const [filterValue, setFilterValue] = useState('all');
   
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    setData(storedData);
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+  }, [data])
+
   const toggleImportant = (id) => {
     setData(prevData => prevData.map(objItem => {
       if (objItem.id === id) {
@@ -59,6 +69,7 @@ const App = () => {
       return objItem;
     }))
   }
+
   const onChecked = (id) => {
     setData(prevData => prevData.map(objItem => {
       if (objItem.id === id) {
