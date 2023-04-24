@@ -122,7 +122,7 @@ const App = () => {
     } 
 
     return items.filter(item => {
-      return item.name.indexOf(searchValue) > -1
+      return item.name.toLocaleLowerCase().startsWith(searchValue);
     })
   }
 

@@ -22,8 +22,8 @@ const ShopAdd = ({onAddItem}) => {
                 break;
         }
     }
-    console.log(item, amount, price)
-    const onSubmit = (e) => {
+/*     console.log(item, amount, price)
+ */    const onSubmit = (e) => {
         if (item === '') return;
         if (amount === '') return;
         if (price === '') return;
