@@ -10,23 +10,25 @@ const ShopAdd = ({onAddItem}) => {
     const [price, setPrice] = useState('');
 
     const onValueChange = (e) => {
+        const filtredNumber = e.target.value.replace(/[^0-9\.]|\.{2,}|^0(?=\d)/gm, '');
+        console.log(filtredNumber.replace(/[^\d]+?[^\.]{0,1}?[^\d]+?\.?/gm, ''));
         switch (e.target.name) {
             case 'item':
                 setItem(e.target.value);
                 break;
             case 'amount':
-                setAmount(e.target.value);
+                setAmount(filtredNumber);
                 break;
             case 'price':
-                setPrice(e.target.value);
+                setPrice(filtredNumber);
                 break;
         }
     }
 /*     console.log(item, amount, price)
  */    const onSubmit = (e) => {
         if (item === '') return;
-        if (amount === '') return;
-        if (price === '') return;
+        if (amount === '' || amount === '0') return;
+        if (price === '' || price === '0') return;
 
         e.preventDefault();
         
@@ -38,7 +40,7 @@ const ShopAdd = ({onAddItem}) => {
         setAmount('');
         setPrice('');
     }
-
+    /* console.log(amount, price) */
     return (
         <section className='add'>
             <h2 className='add__title'>Add a new item:</h2>
@@ -50,14 +52,14 @@ const ShopAdd = ({onAddItem}) => {
                        className="input input__main"
                        placeholder='Item...'
                        required />
-                <input type="number"
+                <input type="text"
                        onChange={onValueChange}
                        value={amount}
                        name="amount" 
                        className="input input__add"
                        placeholder='Amount...'
                        required />
-                <input type="number"
+                <input type="text"
                        onChange={onValueChange}
                        value={price}
                        name="price" 
