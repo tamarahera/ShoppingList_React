@@ -9,18 +9,29 @@ const ShopAdd = ({onAddItem}) => {
     const [amount, setAmount] = useState('');
     const [price, setPrice] = useState('');
 
+    const getFiltredValue = (value) => {
+        // delete not num, "0num", "..."
+        const filtredNumber = value.replace(/[^0-9\.]|\.{2,}|^0(?=\d)/gm, ''); 
+
+        //only num, only one dot
+        const matchedNumber = filtredNumber.match(/(\d+)(\.{0,1})(\d+)?/gm); 
+        if (matchedNumber) {
+            return matchedNumber[0];
+        } else {
+            return filtredNumber;
+        }
+    }
     const onValueChange = (e) => {
-        const filtredNumber = e.target.value.replace(/[^0-9\.]|\.{2,}|^0(?=\d)/gm, '');
-        console.log(filtredNumber.replace(/[^\d]+?[^\.]{0,1}?[^\d]+?\.?/gm, ''));
+        const filtredValue = getFiltredValue(e.target.value);
         switch (e.target.name) {
             case 'item':
                 setItem(e.target.value);
                 break;
             case 'amount':
-                setAmount(filtredNumber);
+                setAmount(filtredValue);
                 break;
             case 'price':
-                setPrice(filtredNumber);
+                setPrice(filtredValue);
                 break;
         }
     }
