@@ -19,8 +19,8 @@ const ShopListItem = ({data, toggleImportant, onChecked, onChangeInput, onDelete
                 {name}
                 <span className="list__name_checkbox"></span>
             </label>
-            <input type="text" className="list__amount" onChange={onChangeInput} data-input="amount" value={amount}/>
-            <input type="text" className="list__price" onChange={onChangeInput} data-input="price" value={price + `$`}/>
+            <input type="text" name="amount" className="list__amount" onChange={onChangeInput} data-input="amount" value={amount}/>
+            <input type="text" name="price" className="list__price" onChange={onChangeInput} data-input="price" value={price + `$`}/>
             <div className="list__btns">
                 <button className="list__btn" onClick={(id) => toggleImportant(id, important)}>
                     <svg viewBox="0 0 17 17" 

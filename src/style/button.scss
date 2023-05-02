@@ -36,7 +36,20 @@
         }          
     }
 }
-
+@media (max-width: 768px) {
+    .button {
+        cursor: none;
+        &:hover {
+            background-color: $yellow;
+        }
+        &__reset {
+            &:hover {
+                background-color: #53524F;
+                color: $grey-light;
+            }          
+        }
+    }
+}
 @media (max-width: 576px) {
     .button {
         &__filter {

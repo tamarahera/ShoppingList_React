@@ -14,7 +14,7 @@ const ShopFilter = ({onUpdateFilter, filterValue}) => {
             currentClass += ' button__filter_active'
         } 
         return (
-            <button className={currentClass} key={name} onClick={() => onUpdateFilter(name)}>
+            <button className={currentClass} type="button" key={name} onClick={() => onUpdateFilter(name)}>
                {label}
             </button>
         )

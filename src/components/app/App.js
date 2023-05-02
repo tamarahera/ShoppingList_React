@@ -180,11 +180,13 @@ const App = () => {
       </header>
       <main className='container'>
         <section className='search'>
+          <h2 className="title-hidden">Search and filter blocks</h2>
           <ShopFind onUpdateSearch={onUpdateSearch}/>
           <ShopFilter onUpdateFilter={onUpdateFilter}
                       filterValue={filterValue}/>
         </section>
         <section className='list'>
+        <h2 className="title-hidden">List with items to buy</h2>
           {content}
        </section>
         <ShopAdd onAddItem={onAddItem}/>

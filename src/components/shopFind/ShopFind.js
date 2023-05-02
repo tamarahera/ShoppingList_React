@@ -10,13 +10,18 @@ const ShopFind = (props) => {
         setSearchValueLocal(e.target.value);
         props.onUpdateSearch(e.target.value);
     }
- 
+
     return (
-        <input className='input input__find'
-               type="text"
-               placeholder="Find an item..."
-               value={searchValueLocal}
-               onChange={onUpdateSearchLocal}/>
+        <>
+            <label className='label-hidden' htmlFor="find">Find an item...</label>
+            <input className='input input__find'
+                type="text"
+                name="find"
+                id="find"
+                placeholder="Find an item..."
+                value={searchValueLocal}
+                onChange={onUpdateSearchLocal} />
+        </>
     )
 }
 
