@@ -35,8 +35,7 @@ const ShopAdd = ({ onAddItem }) => {
                 break;
         }
     }
-/*     console.log(item, amount, price)
- */    const onSubmit = (e) => {
+    const onSubmit = (e) => {
         if (item === '') return;
         if (amount === '' || amount === '0') return;
         if (price === '' || price === '0') return;
@@ -51,7 +50,6 @@ const ShopAdd = ({ onAddItem }) => {
         setAmount('');
         setPrice('');
     }
-    /* console.log(amount, price) */
     return (
         <section className='add'>
             <h2 className='add__title'>Add a new item:</h2>
@@ -60,7 +58,7 @@ const ShopAdd = ({ onAddItem }) => {
                 <input type="text"
                     onChange={onValueChange}
                     value={item}
-                    name="addName"
+                    name="item"
                     className="input input__main"
                     placeholder='Item...'
                     id='addNameInput'
@@ -69,16 +67,16 @@ const ShopAdd = ({ onAddItem }) => {
                 <input type="text"
                     onChange={onValueChange}
                     value={amount}
-                    name="addAmount"
+                    name="amount"
                     className="input input__add"
                     placeholder='Amount...'
                     id='addAmountInput'
                     required />
                 <label className='label-hidden' htmlFor="addPriceInput">Add price</label>
-                <input type="text"
+                <input type="text" 
                     onChange={onValueChange}
                     value={price}
-                    name="addPrice"
+                    name="price"
                     className="input input__add"
                     placeholder='Price...'
                     id='addPriceInput'
