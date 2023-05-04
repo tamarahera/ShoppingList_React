@@ -48,14 +48,18 @@
 }
 
 @media (max-width: 576px) {
+    .app {
+        padding-bottom: 20px;
+    }
     .container {
         max-width: 100%;
         padding: 0 10px;
     }
     .search {
-        padding: 30px 13px;
+        padding: 30px 20px;
     }
     .list {
+        min-height: 50px;
         padding: 25px 13px;
     }
 }

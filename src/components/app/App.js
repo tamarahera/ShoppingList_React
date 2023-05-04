@@ -96,7 +96,7 @@ const App = () => {
 
   const calcAmount = (arr, prop) => {
     let res = arr.reduce((sum, item) => {
-      return sum + item[prop];
+      return sum + +item[prop];
     }, 0);
     return res;
   }
@@ -167,6 +167,7 @@ const App = () => {
   }
   
   const totalItems = data.filter(item => !item.checked);
+  console.log(totalItems)
   const totalAmount = calcAmount(totalItems, 'amount');
   const totalPrice = calcAmount(totalItems, 'price');
   const visibleData = filterItem(searchItem(data, searchValue), filterValue);

@@ -20,7 +20,7 @@
     &__name {
         display: block;
         position: relative;
-        padding: 13px 13px 13px 32px;
+        padding: 0px 13px 0px 32px;
         cursor: pointer;
         input {
             visibility: hidden;
@@ -135,10 +135,12 @@
 
 @media (max-width: 576px) {
     .list {
+
         &__item {
             grid-template-columns: 45% 41px 50px 41px;
             font-size: 14px;
             line-height: 14px;
+            padding: 7px 0;
         }
         &__name {
             padding-left: 13px;
