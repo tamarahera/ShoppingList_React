@@ -1,23 +1,30 @@
 import ShopListItem from '../shopListItem/ShopListItem';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import './shopList.scss';
 import '../../style/button.scss';
 
-const ShopList = ({data, toggleImportant, onChecked, onChangeInput, onDeleteItem, onDeleteChecked}) => {
-
+const ShopList = ({ data, toggleImportant, onChecked, onChangeInput, onDeleteItem, onDeleteChecked }) => {
+    console.log('render shoplist')
     const contentItem = data.map(item => {
-        const {id, ...itemProps} = item;
+        const { id, ...itemProps } = item;
         return (
-            <ShopListItem key={id} 
-                          data={itemProps}
-                          toggleImportant={() => toggleImportant(id)}
-                          onChecked={() => onChecked(id)}
-                          onChangeInput={(e) => onChangeInput(id, e.target.value, e.currentTarget.getAttribute('data-input'))}
-                          onDeleteItem={() => onDeleteItem(id)}
-                          />
+            <CSSTransition
+                key={id}
+                timeout={500}
+                classNames="item"
+            >
+                <ShopListItem key={id}
+                    data={itemProps}
+                    toggleImportant={() => toggleImportant(id)}
+                    onChecked={() => onChecked(id)}
+                    onChangeInput={(e) => onChangeInput(id, e.target.value, e.currentTarget.getAttribute('data-input'))}
+                    onDeleteItem={() => onDeleteItem(id)}
+                />
+            </CSSTransition>
         )
     })
-    
+
     return (
         <>
             <div className="list__title">
@@ -27,10 +34,10 @@ const ShopList = ({data, toggleImportant, onChecked, onChangeInput, onDeleteItem
                 <p></p>
             </div>
             <ul className="list__wrapper">
-                {contentItem}
+                <TransitionGroup component={null}>{contentItem}</TransitionGroup>
             </ul>
             <div className="list__reset">
-                <button type="reset" className='button button__reset' onClick={onDeleteChecked}>Delete checked</button>    
+                <button type="reset" className='button button__reset' onClick={onDeleteChecked}>Delete checked</button>
             </div>
         </>
     )
@@ -40,7 +47,7 @@ const InitTitle = () => {
     return (
         <h2 className="list__init">Add some item to buy...</h2>
     )
-} 
+}
 
 const NoMatchTitle = () => {
     return (
@@ -48,6 +55,6 @@ const NoMatchTitle = () => {
     )
 }
 
-export {ShopList};
-export {InitTitle};
-export {NoMatchTitle};
+export { ShopList };
+export { InitTitle };
+export { NoMatchTitle };

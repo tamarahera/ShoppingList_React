@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import './shopFind.scss';
 import '../../style/input.scss';
 
 const ShopFind = (props) => {

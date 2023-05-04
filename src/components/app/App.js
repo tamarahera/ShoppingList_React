@@ -11,7 +11,7 @@ import Footer from '../footer/Footer';
 import './app.scss';
 
 const dataItems = [
-  {
+  /* {
     name: 'Bananas', 
     amount: 2, 
     price: 3,
@@ -42,7 +42,7 @@ const dataItems = [
     checked: true, 
     important: false,
     id: uuidv4()
-  }
+  } */
 ];
 
 const LOCAL_STORAGE_KEY = 'shopList.data';
@@ -180,13 +180,11 @@ const App = () => {
       </header>
       <main className='container'>
         <section className='search'>
-          <h2 className="title-hidden">Search and filter blocks</h2>
           <ShopFind onUpdateSearch={onUpdateSearch}/>
           <ShopFilter onUpdateFilter={onUpdateFilter}
                       filterValue={filterValue}/>
         </section>
         <section className='list'>
-        <h2 className="title-hidden">List with items to buy</h2>
           {content}
        </section>
         <ShopAdd onAddItem={onAddItem}/>
