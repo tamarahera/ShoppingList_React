@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import ShopAdd from '../shopAdd/ShopAdd';
 import ShopFilter from '../shopFilter/ShopFilter';
 import ShopFind from '../shopFind/ShopFind';
-import {ShopList, InitTitle, NoMatchTitle} from '../shopList/ShopList';
+import { ShopList, InitTitle, NoMatchTitle } from '../shopList/ShopList';
 import ShopTotal from '../shopTotal/ShopTotal';
 import Footer from '../footer/Footer';
 
@@ -51,7 +51,7 @@ const App = () => {
   const [data, setData] = useState(dataItems);
   const [searchValue, setSearchValue] = useState('');
   const [filterValue, setFilterValue] = useState('all');
-  
+
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     setData(storedData);
@@ -64,27 +64,29 @@ const App = () => {
   const toggleImportant = (id) => {
     setData(prevData => prevData.map(objItem => {
       if (objItem.id === id) {
-        return {...objItem, important: !objItem.important}
+        return { ...objItem, important: !objItem.important }
       }
       return objItem;
     }))
   }
 
-  const onChecked = (id) => {
-    setData(prevData => prevData.map(objItem => {
-      if (objItem.id === id) {
-        return {...objItem, checked: !objItem.checked}
-      }
-      return objItem;
-    }))
+  const onChecked = (e, id) => {
+    if (e.type === 'change' || (e.type === 'keydown' && e.code === 'Enter')) {
+      setData(prevData => prevData.map(objItem => {
+        if (objItem.id === id) {
+          return { ...objItem, checked: !objItem.checked }
+        }
+        return objItem;
+      }))
+    }
   }
 
   const onChangeInput = (id, inputValue, inputDataAttr) => {
     setData(prevData => prevData.map(objItem => {
-      if (objItem.id === id) {  
-        return {...objItem, [inputDataAttr]: inputValue.replace(/\D/g, '')}
+      if (objItem.id === id) {
+        return { ...objItem, [inputDataAttr]: inputValue.replace(/\D/g, '') }
       }
-      return {...objItem}
+      return { ...objItem }
     }))
   }
 
@@ -103,10 +105,10 @@ const App = () => {
 
   const onAddItem = (item, amount, price) => {
     let newListItem = {
-      name: item, 
-      amount, 
+      name: item,
+      amount,
       price,
-      checked: false, 
+      checked: false,
       important: false,
       id: uuidv4()
     }
@@ -119,10 +121,10 @@ const App = () => {
   const searchItem = (items, searchValue) => {
     if (searchValue.length === 0) {
       return items;
-    } 
+    }
 
     return items.filter(item => {
-      return item.name.toLocaleLowerCase().startsWith(searchValue);
+      return item.name.toLocaleLowerCase().startsWith(searchValue.toLocaleLowerCase());
     })
   }
 
@@ -138,12 +140,12 @@ const App = () => {
 
   const filterItem = (items, filterValue) => {
     switch (filterValue) {
-      case 'all':
-        return items;
-      case 'important':
-        return items.filter(item => item.important);
       case 'priceOver5':
         return items.filter(item => item.price > 5);
+      case 'important':
+        return items.filter(item => item.important);
+      default:
+        return items;
     }
   }
 
@@ -153,27 +155,26 @@ const App = () => {
 
   const setContent = () => {
     if (data.length < 1 || !data) {
-      return <InitTitle/>
+      return <InitTitle />
     } else if (visibleData.length < 1) {
-      return <NoMatchTitle/>
+      return <NoMatchTitle />
     } else {
-      return <ShopList data={visibleData} 
-                      toggleImportant={toggleImportant} 
-                      onChecked={onChecked} 
-                      onChangeInput={onChangeInput}
-                      onDeleteItem={onDeleteItem}
-                      onDeleteChecked={onDeleteChecked}/>
+      return <ShopList data={visibleData}
+                        toggleImportant={toggleImportant}
+                        onChecked={onChecked}
+                        onChangeInput={onChangeInput}
+                        onDeleteItem={onDeleteItem}
+                        onDeleteChecked={onDeleteChecked} />
     }
   }
-  
+
   const totalItems = data.filter(item => !item.checked);
-  console.log(totalItems)
   const totalAmount = calcAmount(totalItems, 'amount');
   const totalPrice = calcAmount(totalItems, 'price');
   const visibleData = filterItem(searchItem(data, searchValue), filterValue);
 
   const content = setContent();
-   
+
   return (
     <div className='app'>
       <header>
@@ -181,19 +182,19 @@ const App = () => {
       </header>
       <main className='container'>
         <section className='search'>
-          <ShopFind onUpdateSearch={onUpdateSearch}/>
+          <ShopFind onUpdateSearch={onUpdateSearch} />
           <ShopFilter onUpdateFilter={onUpdateFilter}
-                      filterValue={filterValue}/>
+            filterValue={filterValue} />
         </section>
         <section className='list'>
           {content}
-       </section>
-        <ShopAdd onAddItem={onAddItem}/>
+        </section>
+        <ShopAdd onAddItem={onAddItem} />
         <ShopTotal totalItems={totalItems.length}
-                   totalAmount={totalAmount}
-                   totalPrice={totalPrice}/>
+          totalAmount={totalAmount}
+          totalPrice={totalPrice} />
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

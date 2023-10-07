@@ -5,7 +5,6 @@ import './shopList.scss';
 import '../../style/button.scss';
 
 const ShopList = ({ data, toggleImportant, onChecked, onChangeInput, onDeleteItem, onDeleteChecked }) => {
-    console.log('render shoplist')
     const contentItem = data.map(item => {
         const { id, ...itemProps } = item;
         return (
@@ -17,7 +16,7 @@ const ShopList = ({ data, toggleImportant, onChecked, onChangeInput, onDeleteIte
                 <ShopListItem key={id}
                     data={itemProps}
                     toggleImportant={() => toggleImportant(id)}
-                    onChecked={() => onChecked(id)}
+                    onChecked={(e) => onChecked(e, id)}
                     onChangeInput={(e) => onChangeInput(id, e.target.value, e.currentTarget.getAttribute('data-input'))}
                     onDeleteItem={() => onDeleteItem(id)}
                 />

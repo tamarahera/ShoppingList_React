@@ -17,7 +17,7 @@ const ShopListItem = ({data, toggleImportant, onChecked, onChangeInput, onDelete
             <label className="list__name">
                 <input checked={checked} type="checkbox" name="item" onChange={onChecked}/>
                 {name}
-                <span className="list__name_checkbox"></span>
+                <span className="list__name_checkbox" tabIndex={0} onKeyDown={onChecked}></span>
             </label>
             <input type="text" name="amount" className="list__amount" onChange={onChangeInput} data-input="amount" value={amount}/>
             <input type="text" name="price" className="list__price" onChange={onChangeInput} data-input="price" value={price + `$`}/>

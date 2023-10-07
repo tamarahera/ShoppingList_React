@@ -30,7 +30,7 @@ const ShopAdd = ({ onAddItem }) => {
             case 'amount':
                 setAmount(filtredValue);
                 break;
-            case 'price':
+            default:
                 setPrice(filtredValue);
                 break;
         }
@@ -53,7 +53,7 @@ const ShopAdd = ({ onAddItem }) => {
     return (
         <section className='add'>
             <h2 className='add__title'>Add a new item:</h2>
-            <form className='add__form' action="" onSubmit={onSubmit}>
+            <form className='add__form' onSubmit={onSubmit}>
                 <label className='label-hidden' htmlFor="addNameInput">Add name</label>
                 <input type="text"
                     onChange={onValueChange}
