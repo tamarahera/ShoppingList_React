@@ -10,45 +10,10 @@ import Footer from '../footer/Footer';
 
 import './app.scss';
 
-const dataItems = [
-  /* {
-    name: 'Bananas', 
-    amount: 2, 
-    price: 3,
-    checked: false, 
-    important: false,
-    id: uuidv4()
-  },
-  {
-    name: 'Cat`s food', 
-    amount: 5, 
-    price: 10,
-    checked: false, 
-    important: true,
-    id: uuidv4()
-  },
-  {
-    name: 'Bread', 
-    amount: 4, 
-    price: 8,
-    checked: false, 
-    important: false,
-    id: uuidv4()
-  },
-  {
-    name: 'Milk', 
-    amount: 3, 
-    price: 6,
-    checked: true, 
-    important: false,
-    id: uuidv4()
-  } */
-];
-
 const LOCAL_STORAGE_KEY = 'shopList.data';
 
 const App = () => {
-  const [data, setData] = useState(dataItems);
+  const [data, setData] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [filterValue, setFilterValue] = useState('all');
 
