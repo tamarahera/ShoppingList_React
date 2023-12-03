@@ -18,8 +18,10 @@ const App = () => {
   const [filterValue, setFilterValue] = useState('all');
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    setData(storedData);
+    if (localStorage.getItem(LOCAL_STORAGE_KEY)) {
+      const storedData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+      setData(storedData);
+    }
   }, [])
 
   useEffect(() => {
@@ -125,11 +127,11 @@ const App = () => {
       return <NoMatchTitle />
     } else {
       return <ShopList data={visibleData}
-                        toggleImportant={toggleImportant}
-                        onChecked={onChecked}
-                        onChangeInput={onChangeInput}
-                        onDeleteItem={onDeleteItem}
-                        onDeleteChecked={onDeleteChecked} />
+        toggleImportant={toggleImportant}
+        onChecked={onChecked}
+        onChangeInput={onChangeInput}
+        onDeleteItem={onDeleteItem}
+        onDeleteChecked={onDeleteChecked} />
     }
   }
 
